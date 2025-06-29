@@ -1,5 +1,3 @@
-# ASCII 3D Donut in C
-
 A spinning 3D ASCII donut in your terminal, written in C.
 
 ![Donut Animation](donut.gif)
@@ -11,7 +9,6 @@ A spinning 3D ASCII donut in your terminal, written in C.
 
 ### Compile & Run
 ```bash
-# Compile (with math library linked)
 gcc donut.c -o donut -lm
 
 # Run

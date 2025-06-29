@@ -18,3 +18,6 @@ donut.exe   # Windows
 
 ### Original Inspiration
 Inspired by [Joma Tech's](https://www.youtube.com/watch?v=sW9npZVpiMI&t=28s) YouTube video.
+
+### License
+No explicit _license_. Use freely for learning and enjoyment!

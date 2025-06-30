@@ -39,10 +39,12 @@ float my_cos(float x) {
 #define R2 2.0f
 #define K2 5.0f
 
-const char LUMINANCE_CHARS[] = ".:-=+*#@";
+const char LUMINANCE_CHARS[] = " .:-=+*#@";
 
 void render_frame(float rotation_a, float rotation_b, char *buffer, float *depth_buffer) {
-    memset(buffer, ' ', BUFFER_SIZE);
+    for (int i = 0; i < BUFFER_SIZE; i++) {
+        buffer[i] = ' ';
+    }
     memset(depth_buffer, 0, BUFFER_SIZE * sizeof(float));
 
     float sin_a = my_sin(rotation_a);
@@ -88,10 +90,10 @@ void render_frame(float rotation_a, float rotation_b, char *buffer, float *depth
 void display_buffer(const char *buffer) {
     printf("\x1b[H");  // Move cursor to top-left
     for (int i = 0; i < HEIGHT; i++) {
-        for (int j = 0; j < WIDTH; j++) {
-            putchar(buffer[i * WIDTH + j]);
-        }
-        putchar('\n');
+        char line[WIDTH + 1];
+        memcpy(line, &buffer[i * WIDTH], WIDTH);
+        line[WIDTH] = '\0';
+        printf("%s\n", line);
     }
 }
 
@@ -107,10 +109,10 @@ int main() {
         render_frame(rotation_a, rotation_b, output_buffer, z_buffer);
         display_buffer(output_buffer);
 
-        rotation_a += 0.09;
-        rotation_b += 0.045;
+        rotation_a += 0.12;
+        rotation_b += 0.06;
 
-        usleep(5000);
+        usleep(8000);
     }
 
     return 0;
